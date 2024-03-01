@@ -22,6 +22,9 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 Remove-Item -Recurse -Force C:\ProgramData\chocolatey
 
 Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+#Установка графической версии этого менеджера пакетов	
+#choco install ChocolateyGUI -Confirm:$false
 	
 #Браузеры:
 #choco install safari -Confirm:$false
@@ -109,6 +112,7 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePoint
 #choco install geforce-game-ready-driver -Confirm:$false
 #.Net:
 #choco install dotnet-sdk -Confirm:$false
+#choco install netfx-4.8-devpack -Confirm:$false
 
 
 #3D моделирование:
