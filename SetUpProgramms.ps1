@@ -103,12 +103,27 @@ $installPath = "C:\CustomInstallPath"
 # choco install unity-hub -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 
 # Драйвера:
+#Всякие поленые кодеки для видео
+# choco install k-litecodecpack-standard -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # Для видеокарт NVidia:
 # choco install geforce-experience -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install geforce-game-ready-driver -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # .Net:
 # choco install dotnet-sdk -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install netfx-4.8-devpack -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# choco install dotnet1.1 -Confirm:$false
+# choco install dotnet3.5 -Confirm:$false
+# choco install dotnet4.0 -Confirm:$false
+# choco install dotnet-5.0-sdk -Confirm:$false
+# choco install dotnet-5.0-runtime -Confirm:$false
+# choco install dotnet-6.0-sdk -Confirm:$false
+# choco install dotnet-6.0-runtime -Confirm:$false
+# choco install dotnet-7.0-runtime -Confirm:$false
+# choco install dotnet-7.0-sdk -Confirm:$false
+# choco install dotnet-8.0-runtime -Confirm:$false
+# choco install dotnet-8.0-sdk-1xx -Confirm:$false
+# choco install dotnet --pre -Confirm:$false
+# choco install dotnet-runtime --pre -Confirm:$false
 
 # 3D моделирование:
 # choco install blender -Confirm:$false -installargs "'/InstallLocation=$installPath'"
@@ -117,4 +132,13 @@ $installPath = "C:\CustomInstallPath"
 # choco install git.install -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install smartgit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install sourcetree -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+
+
+
+
+# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
