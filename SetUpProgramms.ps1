@@ -35,6 +35,8 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePoint
 #Стандартные программы:
 #Программа архиватор
 #choco install 7zip.install --pre  -Confirm:$false
+#Программа архиватор
+#choco install winrar -Confirm:$false
 #Аналог блокнота, но с расширенным функционалом и плагинами для увеличения удобства работы с простыми текстовыми файлами.
 #choco install notepadplusplus -Confirm:$false -Confirm:$false
 #Аналог проводника
