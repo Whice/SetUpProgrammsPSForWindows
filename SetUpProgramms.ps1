@@ -23,7 +23,7 @@ Remove-Item -Recurse -Force C:\ProgramData\chocolatey
 Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # Установка пути для установки всех программ
-$installPath = "C:\CustomInstallPath"
+$installPath = "D:\Program Files"
 
 # Установка графической версии этого менеджера пакетов
 # choco install ChocolateyGUI -Confirm:$false -installargs "'/InstallLocation=$installPath'"
@@ -86,7 +86,14 @@ $installPath = "C:\CustomInstallPath"
 # choco install box-drive -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # Программа для установки операционных систем прямо внутри основной.
 # choco install virtualbox -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# Программа для установки операционных систем прямо внутри основной. Для этой программы указать путь копирования, т.к. она не устанавливается.
+#choco install rufus -Confirm:$false --ia "'/D=$installPath'"
+#$sourcePath = "C:\ProgramData\chocolatey\lib\rufus\tools"
+#$destinationPath = $installPath + "\Rufus"
+#Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
 
+ 
+ 
 # Для программирования
 # choco install jenkins -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # choco install jetbrainstoolbox -Confirm:$false -installargs "'/InstallLocation=$installPath'"
@@ -103,7 +110,7 @@ $installPath = "C:\CustomInstallPath"
 # choco install unity-hub -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 
 # Драйвера:
-#Всякие поленые кодеки для видео
+#Всякие полезные кодеки для видео
 # choco install k-litecodecpack-standard -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # Для видеокарт NVidia:
 # choco install geforce-experience -Confirm:$false -installargs "'/InstallLocation=$installPath'"
@@ -135,10 +142,5 @@ $installPath = "C:\CustomInstallPath"
 # choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 
 
-
-
-# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
-# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
-# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
-# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
-# choco install tortoisegit -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+Write-Host "Enter for exit..."
+Read-Host
