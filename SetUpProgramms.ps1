@@ -18,12 +18,24 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
  -Confirm:$false
 #>
 
-Remove-Item -Recurse -Force C:\ProgramData\chocolatey
-
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
 # Установка пути для установки всех программ
 $installPath = "D:\Program Files"
+#функция для копирования в папку установки из указанной папки и добавления ярлыка на рабочий стол
+function CopyAndCreateDesktopShortcut($sourcePath, $destinationPath, $exeName) 
+{
+    $exePath = Join-Path -Path $destinationPath -ChildPath $exeName
+    Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force #Копирование
+    $shortcutPath = [Environment]::GetFolderPath("Desktop") + "\$exeName++.lnk" # Путь к ярлыку на рабочем столе
+    $wshShell = New-Object -comObject WScript.Shell
+    $shortcut = $wshShell.CreateShortcut($shortcutPath)
+    $shortcut.TargetPath = $exePath
+    $shortcut.Save()
+}
+
+#Remove-Item -Recurse -Force C:\ProgramData\chocolatey
+
+#Set-ExecutionPolicy RemoteSigned -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 
 # Установка графической версии этого менеджера пакетов
 # choco install ChocolateyGUI -Confirm:$false -installargs "'/InstallLocation=$installPath'"
@@ -45,6 +57,12 @@ $installPath = "D:\Program Files"
 # choco install notepadplusplus -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # Аналог проводника
 # choco install totalcommander -Confirm:$false -installargs "'/InstallLocation=$installPath'"
+# Аналог проводника
+# choco install explorerplusplus -Confirm:$false 
+# $sourcePath = "C:\ProgramData\chocolatey\lib-bad\Explorerplusplus\1.3.5\x64" #Путь, откуда брать
+# $destinationPath = $installPath + "\ExplorerpPusPlus" #Путь, куда положить
+# CopyAndCreateDesktopShortcut -sourcePath $sourcePath -destinationPath $destinationPath -exeName "Explorer++.exe"
+
 
 # Обычные (частые) программы:
 # Хороший переводчик с машинным обучением, для быстрого перевода можно выделить текст и нажать ctrl+C и потом еще раз ctrl+C (щелкнуть дважды) и будет быстрый перевод
@@ -87,10 +105,10 @@ $installPath = "D:\Program Files"
 # Программа для установки операционных систем прямо внутри основной.
 # choco install virtualbox -Confirm:$false -installargs "'/InstallLocation=$installPath'"
 # Программа для установки операционных систем прямо внутри основной. Для этой программы указать путь копирования, т.к. она не устанавливается.
-#choco install rufus -Confirm:$false --ia "'/D=$installPath'"
-#$sourcePath = "C:\ProgramData\chocolatey\lib\rufus\tools"
-#$destinationPath = $installPath + "\Rufus"
-#Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
+# choco install rufus -Confirm:$false --ia "'/D=$installPath'"
+# $sourcePath = "C:\ProgramData\chocolatey\lib\rufus\tools"
+# $destinationPath = $installPath + "\Rufus"
+# CopyAndCreateDesktopShortcut -sourcePath $sourcePath -destinationPath $destinationPath -exeName "rufus.exe"
 
  
  
